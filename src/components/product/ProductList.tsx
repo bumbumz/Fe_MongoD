@@ -1,6 +1,7 @@
 import { Product } from '../../types/product';
 import { ProductCard } from './ProductCard';
 import { Loading } from '../common/Loading';
+import { useTheme } from '../../context/ThemeContext';
 import styles from '../../styles/Product.module.css';
 
 interface ProductListProps {
@@ -8,19 +9,28 @@ interface ProductListProps {
   isLoading: boolean;
 }
 
-export const ProductList: React.FC<ProductListProps> = ({ products, isLoading }) => {
+export const ProductList: React.FC<ProductListProps> = ({
+  products,
+  isLoading,
+}) => {
+  const { isDarkMode } = useTheme();
+
   if (isLoading) {
     return <Loading />;
   }
 
   if (products.length === 0) {
-    return <p style={{ textAlign: 'center' }}>Chưa có sản phẩm nào.</p>;
+    return <p className={styles.noProduct}>Chưa có sản phẩm nào.</p>;
   }
 
   return (
     <div className={styles.productGrid}>
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard
+          key={product.id}
+          product={product}
+          isDarkMode={isDarkMode}
+        />
       ))}
     </div>
   );

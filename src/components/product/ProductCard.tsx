@@ -1,38 +1,48 @@
+import { useState } from 'react';
 import { Product } from '../../types/product';
-import { Button } from '../common/Button';
 import styles from '../../styles/Product.module.css';
 
 interface ProductCardProps {
   product: Product;
+  isDarkMode: boolean;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  isDarkMode,
+}) => {
+  const [hoverIndex, setHoverIndex] = useState(0);
+
+  const images = product.images || [];
+  const currentImage = images[hoverIndex] || { url: '', altText: '' };
+
+  const handleMouseEnter = () => {
+    if (images.length > 1) {
+      setHoverIndex((prev) => (prev + 1) % images.length);
+    }
+  };
+
   return (
-    <div className={styles.productCard}>
-      <div className={styles.productImages}>
-        {product.images && product.images.length > 0 ? (
+    <div
+      className={`${styles.productCard} ${isDarkMode ? styles.dark : styles.light}`}
+    >
+      <div
+        className={styles.productImageContainer}
+        onMouseEnter={handleMouseEnter}
+      >
+        {images.length > 0 ? (
           <img
-            src={product.images[0].url} // Hiển thị ảnh đầu tiên
-            alt={product.images[0].altText || `Product ${product.id}`}
+            src={currentImage.url}
+            alt={currentImage.altText || `Product ${product.id}`}
             className={styles.productImage}
           />
         ) : (
-          <div className={styles.noImage}>Không có hình ảnh</div>
+          <div className={styles.noImage}>Không có ảnh</div>
         )}
       </div>
-      <div className={styles.productInfo}>
-        <h2>{product.descriptionInfo?.name || 'Sản phẩm không tên'}</h2>
-        <p>{product.descriptionInfo?.description || 'Chưa có mô tả.'}</p>
-        <p>
-          <strong>Giá:</strong> {product.price ? `$${product.price.toFixed(2)}` : 'Liên hệ'}
-        </p>
-        <p>
-          <strong>Tồn kho:</strong> {product.availability?.quality || 0}
-        </p>
-      </div>
-      <Button variant="primary" onClick={() => alert(`Xem chi tiết sản phẩm ${product.id}`)}>
-        Xem chi tiết
-      </Button>
+      <h2 className={styles.productName}>
+        {product.descriptionInfo?.name || 'Sản phẩm không tên'}
+      </h2>
     </div>
   );
 };

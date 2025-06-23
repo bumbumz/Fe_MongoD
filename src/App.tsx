@@ -1,11 +1,15 @@
 import { Home } from './pages/Home';
+import { Layout } from './components/layout/Layout';
+import { ThemeProvider } from './context/ThemeContext';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <ThemeProvider>
+      <Layout>
+        <Home />
+      </Layout>
+    </ThemeProvider>
   );
 }
 

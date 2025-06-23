@@ -1,0 +1,42 @@
+.button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.primaryButton {
+  background-color: #007bff;
+  color: white;
+}
+
+.primaryButton:hover {
+  background-color: #0056b3;
+}
+
+.secondaryButton {
+  background-color: #6c757d;
+  color: white;
+}
+
+.secondaryButton:hover {
+  background-color: #5a6268;
+}
+
+.iconButton {
+  padding: 8px;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+:global(.dark) .iconButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

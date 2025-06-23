@@ -13,8 +13,10 @@ export const useProducts = () => {
     try {
       const data = await fetchProducts();
       setProducts(data);
-    } catch (err: any) {
-      setError(`Lỗi khi tải sản phẩm: ${err.message}`);
+    } catch (err: unknown) {
+      setError(
+        `Lỗi khi tải sản phẩm: ${err instanceof Error ? err.message : 'Lỗi không xác định'}`
+      );
     } finally {
       setLoading(false);
     }

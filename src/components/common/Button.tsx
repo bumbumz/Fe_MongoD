@@ -1,9 +1,10 @@
-import React, { ButtonHTMLAttributes } from 'react';
-import styles from '../../../styles/Product.module.css'; // Hoặc dùng App.css
+import { ButtonHTMLAttributes } from 'react';
+import classNames from 'classnames';
+import styles from '../../styles/Button.module.css';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'icon';
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -12,12 +13,19 @@ export const Button: React.FC<ButtonProps> = ({
   className,
   ...props
 }) => {
-  const buttonClass = `${styles.button} ${
-    variant === 'primary' ? styles.primaryButton : styles.secondaryButton
-  } ${className || ''}`;
-
   return (
-    <button className={buttonClass} {...props}>
+    <button
+      className={classNames(
+        styles.button,
+        {
+          [styles.primaryButton]: variant === 'primary',
+          [styles.secondaryButton]: variant === 'secondary',
+          [styles.iconButton]: variant === 'icon',
+        },
+        className
+      )}
+      {...props}
+    >
       {children}
     </button>
   );
