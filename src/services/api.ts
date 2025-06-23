@@ -1,12 +1,14 @@
 import { Product } from '../types/product';
 
-const API_URL = 'http://localhost:8080/api/products';
+const API_URL =
+  process.env.REACT_APP_API_URL || 'https://mongod-1.onrender.com/api/products';
 
-export const fetchProducts = async (): Promise<Product[]> => {
-  const response = await fetch(API_URL);
+export const fetchProducts = async () => {
+  const response = await fetch(`${API_URL}`, {
+    method: 'GET',
+  });
   if (!response.ok) {
-    if (response.status === 204) return [];
-    throw new Error(`HTTP error! status: ${response.status}`);
+    throw new Error('Failed to fetch products');
   }
   return response.json();
 };
