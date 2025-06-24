@@ -1,12 +1,12 @@
 .banner {
-  width: 100%;
-  height: 400px;
-  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 200px; /* Giới hạn trên di động */
 }
 
 .banner-fallback {
   width: 100%;
-  height: 400px;
+  height: 200px;
   overflow: hidden;
 }
 

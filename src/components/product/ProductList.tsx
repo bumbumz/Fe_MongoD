@@ -19,17 +19,14 @@ export const ProductList: React.FC<ProductListProps> = ({
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    console.log('Products length:', products.length); // Debug số sản phẩm
-    console.log('Visible cards init:', visibleCards); // Debug trạng thái hiển thị
-
-    // Khởi tạo mảng hiển thị
+    console.log('Products length:', products.length);
     setVisibleCards(new Array(products.length).fill(false));
 
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           const index = Number(entry.target.getAttribute('data-index'));
-          console.log(`Card ${index} isIntersecting:`, entry.isIntersecting); // Debug observer
+          console.log(`Card ${index} isIntersecting:`, entry.isIntersecting);
           setVisibleCards(prev =>
             prev.map((visible, i) =>
               i === index ? entry.isIntersecting : visible
@@ -38,12 +35,11 @@ export const ProductList: React.FC<ProductListProps> = ({
         });
       },
       {
-        threshold: 0.1, // Giảm threshold để dễ kích hoạt hơn
-        rootMargin: '0px 0px -30px 0px', // Kích hoạt sớm hơn
+        threshold: 0.05, // Giảm để dễ kích hoạt
+        rootMargin: '0px 0px -20px 0px',
       }
     );
 
-    // Theo dõi từng thẻ
     cardRefs.current.forEach((ref, index) => {
       if (ref) {
         ref.setAttribute('data-index', index.toString());
@@ -51,7 +47,6 @@ export const ProductList: React.FC<ProductListProps> = ({
       }
     });
 
-    // Dọn dẹp
     return () => {
       cardRefs.current.forEach(ref => {
         if (ref) observer.unobserve(ref);
@@ -84,3 +79,5 @@ export const ProductList: React.FC<ProductListProps> = ({
     </div>
   );
 };
+
+export default ProductList;

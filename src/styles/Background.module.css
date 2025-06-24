@@ -2,8 +2,21 @@
   position: fixed;
   top: 0;
   left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -1; /* Đặt sau nội dung */
+}
+
+.fallback {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background: linear-gradient(
+    135deg,
+    #f0f0f0,
+    #d0d0d0
+  ); /* Gradient nhẹ làm nền */
   z-index: -1;
-  opacity: 0.3;
 }
