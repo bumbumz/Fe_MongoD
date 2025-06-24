@@ -35,8 +35,8 @@ export const ProductList: React.FC<ProductListProps> = ({
         });
       },
       {
-        threshold: 0.05, // Giảm để dễ kích hoạt
-        rootMargin: '0px 0px -20px 0px',
+        threshold: 0.3, // Tăng để dễ kích hoạt hơn
+        rootMargin: '0px 0px 0px 0px', // Bỏ rootMargin âm
       }
     );
 
