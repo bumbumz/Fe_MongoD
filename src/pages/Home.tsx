@@ -10,7 +10,9 @@ export const Home: React.FC = () => {
   const { isDarkMode } = useTheme();
 
   return (
-    <div className={`${styles.container} ${isDarkMode ? commonStyles.dark : commonStyles.light}`}>
+    <div
+      className={`${styles.container} ${isDarkMode ? commonStyles.dark : commonStyles.light}`}
+    >
       <Background3D />
       {error && <div className={styles.error}>{error}</div>}
       <ProductList products={products} isLoading={loading} />
