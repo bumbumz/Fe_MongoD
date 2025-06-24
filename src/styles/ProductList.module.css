@@ -1,0 +1,22 @@
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.no-product {
+  text-align: center;
+  color: #6c757d;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+}
+
+.dark .no-product {
+  color: #adb5bd;
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
