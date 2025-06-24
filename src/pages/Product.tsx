@@ -8,7 +8,7 @@ export const Product: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
+    setIsDarkMode(prev => !prev);
   };
 
   return (

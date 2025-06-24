@@ -25,10 +25,10 @@ export const ProductList: React.FC<ProductListProps> = ({
 
   return (
     <div className={styles.productGrid}>
-      {products.map((product) => (
+      {products.map(product => (
         <ProductCard
-          key={product.id}
           product={product}
+          key={product.id}
           isDarkMode={isDarkMode}
         />
       ))}

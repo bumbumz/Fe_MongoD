@@ -18,7 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const handleMouseEnter = () => {
     if (images.length > 1) {
-      setHoverIndex((prev) => (prev + 1) % images.length);
+      setHoverIndex(prev => (prev + 1) % images.length);
     }
   };
 
