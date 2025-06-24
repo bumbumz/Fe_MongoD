@@ -32,3 +32,13 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width: 480px) {
+  .container {
+    padding: 5px;
+  }
+
+  .error {
+    font-size: 0.9rem;
+  }
+}

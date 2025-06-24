@@ -3,6 +3,7 @@ import { ProductList } from '../components/product/ProductList';
 import Background3D from '../components/common/Background3D';
 import styles from '../styles/Home.module.css';
 import commonStyles from '../styles/Common.module.css';
+import Banner3D from '../components/common/Banner3D';
 import { useTheme } from '../context/ThemeContext';
 
 export const Home: React.FC = () => {
@@ -13,6 +14,7 @@ export const Home: React.FC = () => {
     <div
       className={`${styles.container} ${isDarkMode ? commonStyles.dark : commonStyles.light}`}
     >
+      <Banner3D />
       <Background3D />
       {error && <div className={styles.error}>{error}</div>}
       <ProductList products={products} isLoading={loading} />

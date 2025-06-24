@@ -1,39 +1,66 @@
 .product-card {
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dark .product-card {
+  background-color: #2c2c2c;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+.dark .product-card:hover {
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
 }
 
 .product-image-container {
   width: 100%;
-  height: 200px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   cursor: pointer;
+  background-color: #f8f9fa;
+  position: relative;
+}
+
+.dark .product-image-container {
+  background-color: #2c2c2c;
 }
 
 .product-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.3s;
+  transition:
+    transform 0.4s ease,
+    opacity 0.3s ease;
 }
 
-.product-image:hover {
-  opacity: 0.9;
+.product-image-container:hover .product-image {
+  opacity: 0.95;
+  transform: scale(1.05);
 }
 
 .no-image {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 200px;
-  background-color: #e9ecef;
-  color: #6c757d;
+  height: 100%;
+  width: 100%;
   font-size: 1rem;
+  color: #6c757d;
+  background-color: #e9ecef;
+  text-align: center;
+  padding: 10px;
 }
 
 .dark .no-image {
@@ -42,22 +69,38 @@
 }
 
 .product-name {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
   text-align: center;
-  padding: 10px;
+  padding: 12px 10px;
   margin: 0;
+  color: #212529;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.dark .product-name {
+  color: #f1f1f1;
 }
 
 @media (max-width: 768px) {
+  .product-name {
+    font-size: 1rem;
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 480px) {
   .product-image-container {
-    height: 150px;
+    aspect-ratio: 1 / 1;
   }
 
   .product-name {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    -webkit-line-clamp: 3;
   }
 }
