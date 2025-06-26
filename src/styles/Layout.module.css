@@ -2,17 +2,51 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: inherit; /* Kế thừa từ body */
+  background-color: inherit;
+  /* Kế thừa từ body */
+  max-width: 2560px;
+  /* Giới hạn chiều rộng tối đa */
+  margin: 0 auto;
+  /* Căn giữa toàn bộ layout */
+  width: 100%;
 }
 
 .main {
   flex: 1;
-  padding: 2rem;
-  background-color: inherit; /* Kế thừa từ body */
+  background-color: inherit;
+  /* Kế thừa từ body */
+  width: 100%;
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: 2560px;
+  /* Đồng bộ với kích thước banner */
+  margin: 0 auto;
+  /* Căn giữa nội dung */
+
+  /* Thêm padding để không sát mép */
+  box-sizing: border-box;
+}
+
+@media (max-width: 1500px) {
+  .main {
+    padding: 1rem;
+  }
+
+  .contentWrapper {
+    padding: 10px;
+  }
 }
 
 @media (max-width: 768px) {
-  .main {
-    padding: 1rem;
+  .contentWrapper {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentWrapper {
+    padding: 0;
   }
 }

@@ -56,8 +56,7 @@
   /* Giảm scale để nhẹ hơn */
   transition:
     transform 0.2s ease,
-    /* Giảm thời gian */
-    opacity 0.2s ease;
+    /* Giảm thời gian */ opacity 0.2s ease;
 }
 
 .no-image {

@@ -1,8 +1,7 @@
 .container {
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
   min-height: 100vh;
+  padding: 0px 20px;
   transition:
     background-color 0.3s,
     color 0.3s;
@@ -24,10 +23,6 @@
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 10px;
-  }
-
   .error {
     font-size: 1rem;
   }
@@ -41,4 +36,24 @@
   .error {
     font-size: 0.9rem;
   }
+}
+
+.bannerWrapper {
+  width: 100%;
+  opacity: 0;
+  /* Bắt đầu ẩn để tạo hiệu ứng */
+  transform: translateY(-100%);
+  /* Bắt đầu từ trên cùng */
+  transition: transform 0.7s ease, opacity 1.5s ease;
+  /* Giữ thời gian 1.5s */
+}
+
+.slideDown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slideUp {
+  opacity: 0;
+  transform: translateY(100%);
 }

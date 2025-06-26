@@ -1,39 +1,154 @@
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  background-color: #1a3c5e;
+  background-image: linear-gradient(135deg, #1a3c5e 0%, #2a5a8a 100%);
+  color: #d4a373;
+  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
-:global(.dark) .header {
-  background-color: #2c3e50;
+.dark {
+  background-color: #0d1b2a;
   color: #ffffff;
 }
 
-:global(.light) .header {
-  background-color: #ffffff;
-  color: #2c3e50;
+.light {
+  background-color: #e0e7ff;
+  color: #000000;
 }
 
-.title {
-  font-size: 2rem;
-  font-weight: 700;
+.logo {
+  margin-left: 90px;
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 150px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.navContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.navLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 5px 15px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: #ffffff;
+  background-color: #d4a373;
+  border-radius: 5px;
+}
+
+.active {
+  color: #ffffff;
+  background-color: #d4a373;
+  border-radius: 5px;
+}
+
+.themeButton {
+  margin-right: 90px;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 15px;
+}
+
+.navOpen {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1a3c5e;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+  min-width: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navOpen.active {
+  display: flex; /* Hiển thị khi active */
+}
+
+@media (max-width: 1024px) {
+  .logo {
+    margin-left: 50px;
+  }
+  .logoImage {
+    height: 100px;
+  }
+  .nav {
+    gap: 15px;
+  }
+  .navLink {
+    padding: 5px 10px;
+  }
+  .themeButton {
+    margin-right: 50px;
+  }
 }
 
 @media (max-width: 768px) {
   .header {
-    padding: 1rem;
+    flex-direction: row;
+    padding: 10px 20px;
+    align-items: center;
   }
+  .logo {
+    margin-left: 10px;
+  }
+  .logoImage {
+    height: 80px;
+  }
+  .nav {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+  .navOpen {
+    display: none;
+  }
+  .themeButton {
+    margin-right: 10px;
+  }
+}
 
-  .title {
-    font-size: 1.5rem;
+@media (max-width: 480px) {
+  .logoImage {
+    height: 60px;
+  }
+  .navLink {
+    padding: 5px 5px;
+    font-size: 0.8rem;
+  }
+  .navOpen {
+    min-width: 150px;
   }
 }

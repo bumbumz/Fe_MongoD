@@ -1,19 +1,63 @@
 import { Button } from '../common/Button';
 import { useTheme } from '../../context/ThemeContext';
+import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import styles from '../../styles/Header.module.css';
 
 export const Header: React.FC = () => {
   const { isDarkMode, toggleDarkMode } = useTheme();
+  const location = useLocation();
+  const isHomeActive = location.pathname === '/';
+  const isMenuActive = location.pathname === '/menu';
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen(prev => {
+      const newState = !prev;
+      console.log('Nav state changed to:', newState); // Debug state
+      return newState;
+    });
+  };
 
   return (
     <header
       className={`${styles.header} ${isDarkMode ? styles.dark : styles.light}`}
     >
-      <h1 className={styles.title}>Cửa hàng sản phẩm</h1>
+      <div className={styles.logo}>
+        <img
+          src="https://katinat.vn/wp-content/uploads/2023/12/cropped-Kat-Logo-fa-rgb-05__1_-removebg-preview.png"
+          alt="Katinat Logo"
+          className={styles.logoImage}
+        />
+      </div>
+      <div className={styles.navContainer}>
+        <button className={styles.hamburger} onClick={toggleNav}>
+          ☰
+        </button>
+        <nav
+          className={`${styles.nav} ${isNavOpen ? `${styles.navOpen} ${styles.active}` : ''}`}
+        >
+          <Link
+            to="/"
+            className={`${styles.navLink} ${isHomeActive ? styles.active : ''}`}
+            onClick={() => setIsNavOpen(false)}
+          >
+            Trang chủ
+          </Link>
+          <Link
+            to="/menu"
+            className={`${styles.navLink} ${isMenuActive ? styles.active : ''}`}
+            onClick={() => setIsNavOpen(false)}
+          >
+            Menu
+          </Link>
+        </nav>
+      </div>
       <Button
         variant="icon"
         onClick={toggleDarkMode}
         title={isDarkMode ? 'Chuyển sang Light Mode' : 'Chuyển sang Dark Mode'}
+        className={styles.themeButton}
       >
         {isDarkMode ? (
           <svg

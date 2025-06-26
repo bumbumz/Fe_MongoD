@@ -12,7 +12,7 @@ export const useProducts = () => {
     setError(null);
     try {
       const data = await fetchProducts();
-      setProducts(data);
+      setProducts(data.data);
     } catch (err: unknown) {
       setError(
         `Lỗi khi tải sản phẩm: ${err instanceof Error ? err.message : 'Lỗi không xác định'}`
