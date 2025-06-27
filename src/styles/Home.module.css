@@ -44,7 +44,9 @@
   /* Bắt đầu ẩn để tạo hiệu ứng */
   transform: translateY(-100%);
   /* Bắt đầu từ trên cùng */
-  transition: transform 0.7s ease, opacity 1.5s ease;
+  transition:
+    transform 0.7s ease,
+    opacity 1.5s ease;
   /* Giữ thời gian 1.5s */
 }
 

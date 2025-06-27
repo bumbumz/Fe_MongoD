@@ -1,0 +1,39 @@
+.chatContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  min-height: 500px;
+}
+
+/* Ẩn text mặc định nếu vẫn hiển thị */
+#n8n-chat .n8n-chat-welcome-message,
+#n8n-chat
+  .n8n-chat-initial-message:not(
+    :contains('Xin chào! Hôm nay tôi có thể giúp gì cho bạn?')
+  ) {
+  display: none !important;
+}
+
+/* Ghi đè màu xanh */
+#n8n-chat {
+  --n8n-chat-primary-color: #28a745;
+  /* Màu xanh lá */
+  --n8n-chat-background-color: #f0fff4;
+  /* Nền nhạt */
+  --n8n-chat-text-color: #155724;
+  /* Màu chữ đậm */
+}
+
+@media (max-width: 768px) {
+  .chatContainer {
+    max-width: 100%;
+    margin: 10px auto;
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatContainer {
+    min-height: 300px;
+  }
+}

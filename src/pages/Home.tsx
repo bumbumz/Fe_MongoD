@@ -3,6 +3,7 @@ import { useTheme } from '../context/ThemeContext';
 import styles from '../styles/Home.module.css';
 import commonStyles from '../styles/Common.module.css';
 import Banner from './../components/banner/Banner';
+import ChatWidget from '../components/chat/ChatWidget';
 
 const Home: React.FC = () => {
   const { isDarkMode } = useTheme();
@@ -78,6 +79,7 @@ const Home: React.FC = () => {
         <h1>a</h1>
         <h1>a</h1>
       </div>
+      <ChatWidget isDarkMode={isDarkMode} />
     </div>
   );
 };
