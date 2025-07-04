@@ -58,7 +58,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ isDarkMode }) => {
   useEffect(() => {
     createChat({
       webhookUrl:
-        'https://ad5244.n8nvps.site/webhook/eabb20f8-5e85-47e0-b472-1365852a888e/chat',
+        'https://ad5244.n8nvps.site/webhook/08dadc78-e6e7-4363-b9fc-c1bd56d216c7/chat',
       webhookConfig: {
         method: 'POST',
         headers: {},
